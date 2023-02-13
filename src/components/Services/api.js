@@ -3,6 +3,7 @@ export function loadLists() {
       { 
         title: 'Backpack', 
         creatable: true,
+        pesoMaximo:100,
         cards: [
           {
             id: 1,
@@ -44,6 +45,7 @@ export function loadLists() {
       { 
         title: 'Backpack 2', 
         creatable: true,
+        pesoMaximo:100,
         cards: [
           {
             id: 6,

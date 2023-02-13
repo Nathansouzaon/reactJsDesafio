@@ -8,8 +8,7 @@ import { Container } from "./styles";
 
 const data = loadLists();//todos os itens da lista estão dentro de data
 const totalOz = 100;
-let soma = 0;
-let valorOz = 0;
+
 
 export default function Board(){   
     const [lists, SetLists] = useState(data);
@@ -18,11 +17,15 @@ export default function Board(){
          SetLists(produce(lists, draft =>{ 
             const dragged = draft[fromList].cards[from];//acessando o item(card) que está sendo arrastado
             
-             valorOz = dragged.oz;
+             let valorOz = dragged.oz;
 
-            soma = (valorOz * valorOz) / 2; 
+             const peso = lists[toList].pesoMaximo;
 
-            if(soma <= totalOz){
+            let soma = lists[toList].cards.reduce((a,b) => a + b.oz, 0);
+
+            let resultadoOz = soma + valorOz;
+
+            if(resultadoOz <= peso){
                 draft[fromList].cards.splice(from, 1);//removendo o item que está sendo arrastado da lista
                 draft[toList].cards.splice(to, 0, dragged);//colocando em uma nova posição
                  //to = qual e a posição que está sendo arrastado e 0=coloca antes daquele item e movendo o card pra mesma lista ou outra

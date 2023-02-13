@@ -18,7 +18,7 @@ export default function List({ data, index:listIndex }){
                 )}
             </header>
             <br/> <br/>          <br/> <br/>
-            <p>Peso Maximo De itens é: {totalOz} Oz</p>
+            <p>Peso Maximo De itens é: {totalOz} Oz, peso atual é {data.cards.map(cards => cards).reduce((a,b) => a+b.oz, 0)}</p>
  
             <ul>
                 
